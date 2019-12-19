@@ -11,6 +11,8 @@ import javax.persistence.*;
 @Setter
 public class User {
 
+    private static final int LEVEL_UP_THRESHOLD = 1000;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +33,28 @@ public class User {
         this.exp = exp;
         this.level = level;
         this.type = type;
+    }
+
+    public void levelUpUser() {
+        if (canLevelUp()) {
+            level++;
+        }
+    }
+
+    private boolean canLevelUp() {
+        if (type.equals(UserType.VIP)) {
+            return true;
+        }
+
+        if (type.equals(UserType.NORMAL)) {
+            return exp > LEVEL_UP_THRESHOLD;
+        }
+
+        return false;
+    }
+
+    boolean hasType(UserType type) {
+        return this.type.equals(type);
     }
 
 }

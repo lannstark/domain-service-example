@@ -29,8 +29,6 @@ public class UserRepositoryTest {
         userRepository.save(user);
 
         // then
-        // TODO: 19/12/2019 여기서 고민인데 원래는 Equals 를 더 객체지향적이에요
-        // TODO: 19/12/2019 다음 개선에서 보여드리겠습니다 후후
         assertThat(userRepository.findAll().get(0).getName()).isEqualTo(userName);
     }
 
