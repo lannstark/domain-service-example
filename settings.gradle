@@ -1,0 +1,4 @@
+rootProject.name = 'better-objective'
+include 'core'
+include 'web'
+
